@@ -1,10 +1,29 @@
 
-const btn = document.querySelector("button");
+//On rajoute un peu de style pour centrer les boutons au moins 
+document.body.style.display = "flex";
+document.body.style.justifyContent = "center";
+document.body.style.alignItems = "center";
+document.body.style.minHeight = "100vh";
+document.body.style.gap = "30px";
 
+
+
+//const btn = document.querySelector("button");
+
+const btns = document.querySelectorAll("button")
+
+btns.forEach((btn)=>{
+    btn.addEventListener("click", (e)=>{
+        console.log(e.target.id);
+        singleRound(String(e.target.id), computerPlay());
+    });
+});
+/*
 btn.addEventListener("click", () => {
     console.log("J'ai cliqué !");
     singleRound(computerPlay());
 });
+*/
 
 
 function computerPlay(){
@@ -13,10 +32,8 @@ function computerPlay(){
     return coupPossible[play];
 }
 
-function singleRound(computer){
-    let player = prompt("Qu'est-ce que tu joues BG ?");
+function singleRound(player, computer){
     if (String(player) != "rock" && String(player) != "paper" &&  String(player) != "scissors"){
-        console.log(String(player) != "rock" && String(player) != "paper" &&  String(player) != "scissors")
         singleRound(computer); 
     }
 
@@ -31,4 +48,5 @@ function singleRound(computer){
     }
 }
 
+//Je rajoute un commentaire pour tester la fonctionnalité branch.
 
